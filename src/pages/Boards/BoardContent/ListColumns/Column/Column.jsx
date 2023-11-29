@@ -18,7 +18,7 @@ import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import ListCards from "./ListCards/ListCards";
 
-function Column() {
+function Column({ column }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -60,7 +60,7 @@ function Column() {
             cursor: "pointer",
           }}
         >
-          Column Title
+          {column?.title}
         </Typography>
         <Box>
           <Tooltip title="More options">
@@ -124,7 +124,7 @@ function Column() {
       </Box>
 
       {/* Column List Card */}
-      <ListCards />
+      <ListCards cards={column?.cards} />
 
       {/* Column Footer */}
       <Box
