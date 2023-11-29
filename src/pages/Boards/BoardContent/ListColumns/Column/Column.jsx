@@ -18,7 +18,19 @@ import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import ListCards from "./ListCards/ListCards";
 
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+
 function Column({ column }) {
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id: column._id, data: { ...column } });
+
+  const dndKitColumnStyles = {
+    // touchAction: "none",
+    transform: CSS.Translate.toString(transform),
+    transition,
+  };
+
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -30,6 +42,10 @@ function Column({ column }) {
 
   return (
     <Box
+      ref={setNodeRef}
+      style={dndKitColumnStyles}
+      {...attributes}
+      {...listeners}
       sx={{
         minWidth: "300px",
         maxWidth: "300px",
