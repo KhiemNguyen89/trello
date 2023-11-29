@@ -10,22 +10,23 @@ import AddToDriveIcon from "@mui/icons-material/AddToDrive";
 import BoltIcon from "@mui/icons-material/Bolt";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import { capitalizeFirstLetter } from "~/utils/formatters";
 
-function BoardBar() {
-  const MENU_STYLES = {
+const MENU_STYLES = {
+  color: "white",
+  bgcolor: "transparent",
+  border: "none",
+  paddingX: "5px",
+  borderRadius: "4px",
+  ".MuiSvgIcon-root": {
     color: "white",
-    bgcolor: "transparent",
-    border: "none",
-    paddingX: "5px",
-    borderRadius: "4px",
-    ".MuiSvgIcon-root": {
-      color: "white",
-    },
-    "&:hover": {
-      bgcolor: "primary.50",
-    },
-  };
+  },
+  "&:hover": {
+    bgcolor: "primary.50",
+  },
+};
 
+function BoardBar({ board }) {
   return (
     <Box
       sx={{
@@ -46,13 +47,13 @@ function BoardBar() {
         <Chip
           sx={MENU_STYLES}
           icon={<DashboardIcon />}
-          label="Board"
+          label={board?.title}
           clickable
         />
         <Chip
           sx={MENU_STYLES}
           icon={<VpnLockIcon />}
-          label="Public/Private Workspace"
+          label={capitalizeFirstLetter(board?.type)}
           clickable
         />
         <Chip
