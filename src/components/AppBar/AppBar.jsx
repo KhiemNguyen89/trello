@@ -1,5 +1,5 @@
 import TrelloIcon from "~/assets/trello.svg?react";
-import ModeSelect from "~/components/ModeSelect";
+import ModeSelect from "~/components/ModeSelect/ModeSelect";
 import Box from "@mui/system/Box";
 import SvgIcon from "@mui/material/SvgIcon";
 import Typography from "@mui/material/Typography";
