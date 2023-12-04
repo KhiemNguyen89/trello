@@ -88,7 +88,6 @@ function BoardContent({ board }) {
         overCardIndex >= 0
           ? overCardIndex + modifier
           : overColumn.cards.length + 1;
-      console.log("setOrderedColumns ~ newCardIndex:", newCardIndex);
 
       const nextColumns = cloneDeep(prevColumns);
       const nextActiveColumn = nextColumns.find(
@@ -236,8 +235,6 @@ function BoardContent({ board }) {
           activeDraggingCardId,
           activeDraggingCardData
         );
-
-        console.log("orderedColumns: ", orderedColumns);
       } else {
         // Lay vi tri Card truoc khi keo
         const oldCardIndex = originalDragItemColumnData?.cards?.findIndex(
@@ -301,11 +298,9 @@ function BoardContent({ board }) {
       //     : rectIntersection(args);
 
       let overId = getFirstCollision(poiterIntersections, "id");
-      // console.log("BoardContent ~ overId:", overId);
       if (overId) {
         const checkColumn = orderedColumns.find((c) => c._id === overId);
         let overCardId = null;
-        // console.log("BoardContent ~ checkColumn:", checkColumn);
         if (checkColumn) {
           overCardId = closestCorners({
             ...args,
